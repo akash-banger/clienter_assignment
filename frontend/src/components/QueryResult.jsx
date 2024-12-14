@@ -5,8 +5,10 @@ import remarkGfm from 'remark-gfm';
 const QueryResult = ({ result, isLoading, error, model }) => {
   if (isLoading) {
     return (
-      <div className="w-full max-w-2xl p-6 bg-gray-50 rounded-lg animate-pulse">
-        Loading...
+      <div className="w-full max-w-2xl p-6 bg-gray-50 rounded-lg flex flex-col items-center justify-center">
+        <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent border-solid rounded-full animate-spin"></div>
+        <p className="mt-4 text-gray-600 text-sm">Processing your query...</p>
+        <p className="mt-1 text-gray-400 text-xs">This might take a few moments. Hang tight!</p>
       </div>
     );
   }

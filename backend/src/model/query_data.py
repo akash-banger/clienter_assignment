@@ -37,7 +37,7 @@ def query_data(query):
         is_valid, message = validate_query(query)
         if not is_valid:
             print(f"Query validation failed: {message}")
-            return None
+            return f"Query validation failed: {message}"
 
         # Create engine and connect
         engine = get_db_connection()
