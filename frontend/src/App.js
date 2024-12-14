@@ -6,10 +6,12 @@ function App() {
   const [result, setResult] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [model, setModel] = useState('');
 
   const handleSubmit = async (query, model) => {
     setIsLoading(true);
     setError('');
+    setModel(model);
     
     try {
       const endpoint = model === 'pandasai' ? '/query/pandasai' : '/query/ownmodel';
@@ -48,6 +50,7 @@ function App() {
             result={result}
             isLoading={isLoading}
             error={error}
+            model={model}
           />
         </div>
       </div>

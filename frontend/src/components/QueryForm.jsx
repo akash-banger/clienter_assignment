@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 
 const QueryForm = ({ onSubmit }) => {
   const [query, setQuery] = useState('');
-  const [model, setModel] = useState('pandasai');
+  const [model, setModel] = useState('ownmodel');
 
   const handleSubmit = (e) => {
     e.preventDefault();

@@ -1,0 +1,28 @@
+[tool.poetry]
+name = "backend"
+version = "0.1.0"
+description = ""
+authors = ["Akash Banger <akashbanger2@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pandas = "1.5.3"
+pandasai = "^2.4.0"
+numpy = "^1.24.0"
+fastapi = "^0.115.6"
+uvicorn = "^0.33.0"
+python-dotenv = "^1.0.1"
+seaborn = "^0.13.2"
+pyyaml = "^6.0.2"
+sqlparse = "^0.5.3"
+google-generativeai = "^0.8.3"
+langchain-google-genai = "^2.0.7"
+langchain = "^0.3.11"
+langchain-community = "^0.3.11"
+faiss-cpu = "^1.9.0.post1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
