@@ -3,6 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import pandas as pd
 from datetime import datetime
+import uuid
 
 Base = declarative_base()
 
@@ -61,9 +62,13 @@ def save_data_to_db(csv_file_path):
     # Convert date string to datetime
     df['ORDERDATE'] = pd.to_datetime(df['ORDERDATE'])
     
+    if 'ORDERID' in df.columns:
+        df['ORDERID'] = df['ORDERID'].apply(lambda x: str(uuid.UUID(x)) if not pd.isna(x) else None)
+    
     # Convert DataFrame to SQL
     df.to_sql('orders', engine, if_exists='replace', index=False,
               dtype={
+                  'ORDERID': String(36),
                   'ORDERNUMBER': Integer,
                   'QUANTITYORDERED': Integer,
                   'PRICEEACH': Float,

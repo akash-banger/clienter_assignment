@@ -25,7 +25,7 @@ class GeminiService:
         self.system_prompt = """
         You are a SQL expert. Given a question about sales data, generate a SQL query to answer it.
         The database has a orders table with these columns:
-        ORDERNUMBER, QUANTITYORDERED, PRICEEACH, ORDERLINENUMBER, SALES, ORDERDATE, 
+        ORDERID, ORDERNUMBER, QUANTITYORDERED, PRICEEACH, ORDERLINENUMBER, SALES, ORDERDATE, 
         STATUS, QTR_ID, MONTH_ID, YEAR_ID, PRODUCTLINE, MSRP, PRODUCTCODE, 
         CUSTOMERNAME, PHONE, ADDRESSLINE1, ADDRESSLINE2, CITY, STATE, POSTALCODE, 
         COUNTRY, TERRITORY, CONTACTLASTNAME, CONTACTFIRSTNAME, DEALSIZE
@@ -41,7 +41,8 @@ class GeminiService:
             # Enhanced parameter check prompt with column information
             parameter_check_prompt = f"""
             The database has a orders table with these columns:
-            - ORDERNUMBER: Unique identifier for each order
+            - ORDERID: Unique identifier for each order
+            - ORDERNUMBER: Order number
             - QUANTITYORDERED: Number of items ordered
             - PRICEEACH: Price per item
             - ORDERLINENUMBER: Line number of the order
