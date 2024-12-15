@@ -15,7 +15,7 @@ function App() {
     
     try {
       const endpoint = model === 'pandasai' ? '/query/pandasai' : '/query/ownmodel';
-      const response = await fetch(`http://34.28.93.137/:8000${endpoint}`, {
+      const response = await fetch(`http://34.28.93.137:8000${endpoint}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
