@@ -19,7 +19,7 @@ def clean_sql_response(sql_response: str) -> str:
 
 class GeminiService:
     def __init__(self):
-        self.llm = GoogleGenerativeAI(model="gemini-pro", temperature=0.1)
+        self.llm = GoogleGenerativeAI(model="gemini-1.5-pro", temperature=0.1)
         
         # System prompt to help Gemini generate SQL queries
         self.system_prompt = """
@@ -138,6 +138,8 @@ class GeminiService:
                 final_response = await self.llm.ainvoke(result_prompt)
                 return final_response.strip()
             
+            
+            sql_query = sql_query.strip().replace("\n", ' ')
             # Format the results using Gemini
             result_prompt = f"""
             Based on the following:
@@ -150,7 +152,7 @@ class GeminiService:
             3. If there are numerical comparisons, present them in a Markdown table
             4. Use bold and italic text where appropriate for emphasis
             5. If there are distinct categories or time periods, use level 3 headings
-            6. Include a brief summary at the end under a level 3 heading "### Summary"
+            6. Include a brief summary (if needed) at the end under a level 3 heading "### Summary"
             
             Make sure to break down the information appropriately and focus on significant insights and patterns.
             """
